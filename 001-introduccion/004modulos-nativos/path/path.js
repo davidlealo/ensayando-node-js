@@ -26,3 +26,9 @@ console.log('Obtener el nombre del fichero sin extensión')
 const filename = path.basename('/tmp/mycarpeta/password.txt', '.txt')
 console.log(filename)
 console.log('========================================')
+
+//Obtener la extensión
+console.log('Obtener la extensión')
+const extension = path.extname('image.jpg')
+console.log(extension)
+console.log('========================================')
