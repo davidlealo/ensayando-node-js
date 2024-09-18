@@ -13,4 +13,4 @@
 console.log(process.cwd())
 
 //Plataforma
-console.log(process.env.OPENAI_API_KEY)
+console.log(process.env.OPENAI_API_KEY) // Ejemplo de variable de entorno de OPEN AI KEY
