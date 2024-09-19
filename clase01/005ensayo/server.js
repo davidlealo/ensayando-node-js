@@ -8,3 +8,7 @@ const server = http.createServer((req, res) => {
 server.listen(0, () => {
     console.log(`server listening on port http://localhost:${server.address().port}`)
   })
+
+  http.get(`http://localhost:${server.address().port}`, (res) => {
+    console.log(`STATUS: ${res.statusCode}`)
+  })
