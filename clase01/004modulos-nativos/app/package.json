@@ -10,5 +10,8 @@
   "description": "",
   "dependencies": {
     "picocolors": "^1.1.0"
+  },
+  "devDependencies": {
+    "standard": "^17.1.2"
   }
 }
