@@ -1,16 +1,16 @@
 // Argumentos de entrada
-//console.log(process.argv)
+// console.log(process.argv)
 
-//Controlar el proceso y su salida
-//process.exit(1)
+// Controlar el proceso y su salida
+// process.exit(1)
 
-//Controlar eventos del proceso
-//process.on('exit', ()=>{
-    //limpiar los recursos
-//})
+// Controlar eventos del proceso
+// process.on('exit', ()=>{
+// limpiar los recursos
+// })
 
-//Current working directory
+// Current working directory
 console.log(process.cwd())
 
-//Plataforma
+// Plataforma
 console.log(process.env.OPENAI_API_KEY) // Ejemplo de variable de entorno de OPEN AI KEY
