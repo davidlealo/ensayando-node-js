@@ -7,17 +7,19 @@ const processRequest = (req, res) => {
 
     if (req.url == '/') {
         res.statusCode = 200
-        res.end('<h1>Bienvenido al inicio de mi sitio web</h1>')}
+        res.end('<h1>Bienvenido al inicio de mi sitio web</h1>')
+    }
     else if (req.url == '/contacto') {
         res.statusCode = 200
         res.end('<h1>Contacto</h1>')
     } else {
         res.statusCode = 404
         res.end('<h1>404</h1>')
-    }}
+    }
+}
 
 const server = http.createServer(processRequest)
 
-server.listen(desiredPort, () =>{
+server.listen(desiredPort, () => {
     console.log(`server listening on port http://localhost:${desiredPort}`)
 })
