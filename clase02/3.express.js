@@ -2,6 +2,8 @@ const express = require('express')
 
 const app = express()
 
+app.disable('x-powered-by')
+
 const PORT = process.env.PORT ?? 1234
 
 app.get('/', (req, res) => {
@@ -18,8 +20,8 @@ app.post('/pokemon', (req, res) => {
 
   req.on('end', () => {
     const data = JSON.parse(body)
-    res.writeHead(201, { 'content-type': 'application/json; charset=utf=8' })
-    data.rimestamp = Date.now()
+    data.timestamp = Date.now()
+    res.status(201).json(data)
   })
 })
 
