@@ -28,6 +28,10 @@ app.use(express.json())
 //   })
 // })
 
+app.get('/pokemon/ditto', (req, res) => {
+  res.json(ditto)
+})
+
 app.post('/pokemon', (req, res) => {
 // req.body deberíamos guardar en bbdd
   res.status(201).json(req.body)
