@@ -36,6 +36,7 @@ app.post('/movies', (req, res) => {
     const {
         tittle,
         genre,
+        director,
         year,
         duration,
         rate,
@@ -58,7 +59,7 @@ app.post('/movies', (req, res) => {
     movies.push(newMovie)
 
     res.status(201).json(newMovie) // actualiza la caché del cliente
-    
+
 })
 
 const PORT = process.env.PORT ?? 1234
