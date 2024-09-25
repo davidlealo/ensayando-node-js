@@ -34,6 +34,11 @@ app.get('/', (req, res) => {
 
 // Todas las películas
 app.get('/movies', (req, res) =>{
+    const origin = req.header('origin')
+    if (ACCEPTED_ORIGINS.includes(origin)) {
+    res.header('Access-Control-Allow-Origin', 'http://localhost:8080')
+  
+    }
     // películas por género
     const { genre } = req.query
     if (genre) {
