@@ -1,5 +1,7 @@
 const express = require('express')
+const crypto = require('node:crypto')
 app = express()
+app.use(express.json())
 const movies = require('./movies.json')
 app.disable('x-powered-by')
 
@@ -28,6 +30,35 @@ app.get('/movies/:id', (req, res) =>{
     if (movie) return res.json(movie)
 
     res.status(404).json({message: 'Movie not found'})
+})
+
+app.post('/movies', (req, res) => {
+    const {
+        tittle,
+        genre,
+        year,
+        duration,
+        rate,
+        poster
+    } = req.body
+
+    const newMovie = {
+        id: crypto.randomUUID(), // uuid v4
+        tittle,
+        genre,
+        director,
+        year,
+        duration,
+        rate: rate ?? 0,
+        poster
+    }
+
+    // Esto no sería REST porque estamos guardando
+    // el estado de la aplicación en memoria
+    movies.push(newMovie)
+
+    res.status(201).json(newMovie) // actualiza la caché del cliente
+    
 })
 
 const PORT = process.env.PORT ?? 1234
