@@ -1,0 +1,2 @@
+npx servor /web
+node --watch app.js
