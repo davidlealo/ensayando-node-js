@@ -8,4 +8,4 @@ GET http://localhost:1234/movies/1
 GET http://localhost:1234/movies/dcdd0fad-a94c-4810-8acc-5f108d3b18c3
 
 ### Recuperar todas películas por un género
-GET http://localhost:1234/movies?genre=Terror
+GET http://localhost:1234/movies?genre=Action
