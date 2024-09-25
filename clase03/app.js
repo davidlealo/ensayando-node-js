@@ -54,6 +54,7 @@ app.post('/movies', (req, res) => {
 
 })
 
+// Actualizar una película 
 app.patch('/movies/:id', (req, res) => {
     const result = validatePartialMovie(req.body)
   
