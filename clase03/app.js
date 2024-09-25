@@ -9,6 +9,15 @@ app.get('/', (req, res) => {
 
 // Todas las películas
 app.get('/movies', (req, res) =>{
+    // películas por género
+    const { genre } = req.query
+    if (genre) {
+        const filteredMovies = movies.filter(
+            // movie => movie.genre.includes(genre) así queda key sensitive
+            movie => movie.genre.some(g => g.toLowerCase() === genre.toLowerCase())
+        )
+        return res.json(filteredMovies)
+    }
     res.json(movies)
 })
 
