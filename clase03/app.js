@@ -3,6 +3,7 @@ const crypto = require('node:crypto')
 app = express()
 app.use(express.json())
 const movies = require('./movies.json')
+const z = require('zod')
 app.disable('x-powered-by')
 
 app.get('/', (req, res) => {
@@ -33,6 +34,27 @@ app.get('/movies/:id', (req, res) =>{
 })
 
 app.post('/movies', (req, res) => {
+    const movieSchema = z.object({
+        tittle: z.string({
+            invalid_type_error: "Movie tittle must be a string",
+            required_error: "Movie tittle is require",
+        }),
+        year: z.number().int().min(1900).max(2025),
+        director: z.string(),
+        duration: z.number().int().positive(),
+        rate: z.number().min(0).max(10),
+        // poster: z.string().url().endsWith('.jpg'),
+        poster: z.string().url().endsWith({
+            message: "Poster must be a valid URL"
+        }),
+        genre: z.array(
+            z.enun(['Action', 'Adventure', 'Comedy', 'Drama', 'Fantasy', 'Horror', 'Thriller', 'Sci-fi']),
+            {
+                required_error: 'Movie genre is required',
+                invalid_type_error: 'Movie genre must be an array of enum Genre'
+            }
+        )
+    })
     const {
         tittle,
         genre,
