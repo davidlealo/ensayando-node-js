@@ -15,7 +15,7 @@ POST http://localhost:1234/movies
 Content-Type: application/json
 
 {
-    "tittle": "The Godfather",
+    "title": "The Godfather",
     "year": 1975,
     "director": "Francis Ford Coppola",
     "duration": 175,
