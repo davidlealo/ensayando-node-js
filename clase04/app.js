@@ -6,7 +6,7 @@ import { validateMovie, validatePartialMovie } from './schemas/movies.js'
 
 import { createRequire } from 'node:module'
 const require = createRequire(import.meta.url)
-const movies = requre('./movies.json')
+const movies = require('./movies.json')
 
 
 const app = express()
