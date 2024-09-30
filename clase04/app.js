@@ -1,19 +1,17 @@
-const express = require('express')
-const crypto = require('node:crypto')
-const cors = require('cors')
+import express, { json } from 'express'
+import { randomUUID } from 'node:crypto'
+import cors from 'cors'
 
-const movies = require('./movies.json')
-const { validateMovie, validatePartialMovie } = require('./schemas/movies')
+import movies from './movies.json' assert { type: 'json' }
+import { validateMovie, validatePartialMovie } from './schemas/movies.js'
 
 const app = express()
-app.use(express.json())
+app.use(json())
 app.use(cors({
   origin: (origin, callback) => {
     const ACCEPTED_ORIGINS = [
       'http://localhost:8080',
-      'http://localhost:1234',
-      'https://movies.com',
-      'https://midu.dev'
+      'http://localhost:1234'
     ]
 
     if (ACCEPTED_ORIGINS.includes(origin)) {
@@ -64,7 +62,7 @@ app.post('/movies', (req, res) => {
 
   // en base de datos
   const newMovie = {
-    id: crypto.randomUUID(), // uuid v4
+    id: randomUUID(), // uuid v4
     ...result.data
   }
 
