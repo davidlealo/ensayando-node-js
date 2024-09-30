@@ -2,8 +2,12 @@ import express, { json } from 'express'
 import { randomUUID } from 'node:crypto'
 import cors from 'cors'
 
-import movies from './movies.json' with { type: 'json' }
 import { validateMovie, validatePartialMovie } from './schemas/movies.js'
+
+import { createRequire } from 'node:module'
+const require = createRequire(import.meta.url)
+const movies = requre('./movies.json')
+
 
 const app = express()
 app.use(json())
