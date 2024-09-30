@@ -2,7 +2,7 @@ import express, { json } from 'express'
 import { randomUUID } from 'node:crypto'
 import cors from 'cors'
 
-import movies from './movies.json' assert { type: 'json' }
+import movies from './movies.json' with { type: 'json' }
 import { validateMovie, validatePartialMovie } from './schemas/movies.js'
 
 const app = express()
