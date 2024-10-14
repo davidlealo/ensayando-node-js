@@ -4,7 +4,7 @@ const port = process.env.PORT ?? 3000
 
 const app = express()
 
-app.get('/', (res, req) =>{
+app.get('/', (req, res) =>{
     res.send('<h1> Esto es el chat</h1>')
 })
 
