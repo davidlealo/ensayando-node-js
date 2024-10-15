@@ -17,7 +17,7 @@ const io = new Server(server, {
 })
 
 const db = createClient({
-  url: 'libsql://cuddly-wasp-midudev.turso.io',
+  url: 'libsql://fast-silver-fox-davidlealo.turso.io',
   authToken: process.env.DB_TOKEN
 })
 
