@@ -21,12 +21,16 @@ export class UserRepository {
 
     const id = crypto.randomUUID()
     const hashPassword = await bcrypt.hashSync(password, SALT_ROUNDS)
+    console.log(typeof username, username) // debería ser 'string'
+    console.log(typeof password, password) // debería ser 'string'
 
-    User.create({
+    const newUser = User.create({
       _id: id,
       username,
       password: hashPassword
-    }).save()
+    })
+
+    newUser.save()
 
     return id
   }
