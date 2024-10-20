@@ -13,12 +13,12 @@ app.post('/login', (req, res) => {
 
 })
 
-app.post('/register', (req, res) => {
+app.post('/register', async (req, res) => {
   const { username, password } = req.body
   console.log(req.body)
 
   try {
-    const id = userRepository.create({ username, password })
+    const id = await userRepository.create({ username, password })
     res.send(id)
   } catch (error) {
     res.status(400).send(error.message)
