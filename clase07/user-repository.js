@@ -1,7 +1,7 @@
 import DBlocal from 'db-local'
 import crypto from 'crypto'
 
-const { Schema } = new DBlocal({ path: '/db' })
+const { Schema } = new DBlocal({ path: './db' })
 
 const User = Schema('User', {
   _id: { Type: String, required: true },
