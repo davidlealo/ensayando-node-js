@@ -11,15 +11,10 @@ const User = Schema('User', {
   password: { Type: String, required: true }
 })
 
-export class userRepository {
+export class UserRepository {
   static async create ({ username, password }) {
-    if (typeof username !== 'string') throw new Error('username must be a string')
-
-    if (username.length < 3) throw new Error('username must at least 3 characters long')
-
-    if (typeof password !== 'string') throw new Error('password must be a string')
-
-    if (password.length < 6) throw new Error('password must at least 6 characters long')
+    Validation.username(username)
+    Validation.password(password)
 
     const user = User.findOne({ username })
     if (user) throw new Error('username already exist')
@@ -36,5 +31,22 @@ export class userRepository {
     return id
   }
 
-  static login ({ username, password }) {}
+  static login ({ username, password }) {
+    Validation.username(username)
+    Validation.password(password)
+  }
+}
+
+class Validation {
+  static username (username) {
+    if (typeof username !== 'string') throw new Error('username must be a string')
+
+    if (username.length < 3) throw new Error('username must at least 3 characters long')
+  }
+
+  static password (password) {
+    if (typeof password !== 'string') throw new Error('password must be a string')
+
+    if (password.length < 6) throw new Error('password must at least 6 characters long')
+  }
 }
