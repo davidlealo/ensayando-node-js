@@ -132,3 +132,6 @@ dist
 .DS_Store
 clase06/. env
 clase07/db/
+clase07/db/User.json
+User.json
+clase07/db/User.json

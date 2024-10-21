@@ -28,9 +28,9 @@ export class UserRepository {
       _id: id,
       username,
       password: hashPassword
-    })
+    }).save()
 
-    newUser.save()
+    console.log('Usuario creado:', newUser)
 
     return id
   }
@@ -45,7 +45,9 @@ export class UserRepository {
     const isValid = await bcrypt.compareSync(password, user.password)
     if (!isValid) throw new Error('Password is invalid')
 
-    return user
+    const { password: _, ...PublicUser } = user
+
+    return PublicUser
   }
 }
 
